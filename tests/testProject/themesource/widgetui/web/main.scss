@@ -1,0 +1,20 @@
+@import '../../../theme/web/custom-variables';
+
+.aq-treeitem-plane{
+
+}
+
+.aq-treeitem-folder{
+    
+}
+
+.aq-treeitem-document{
+    color:purple;
+    background-color: yellow;
+    div[class$="iconContainer"] {
+        span{
+            color: purple;
+        }
+        
+    }
+}

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget
+    id="com.auraq.aqtreeview.AqTreeView"
+    pluginWidget="true"
+    needsEntityContext="true"
+    offlineCapable="true"
+    supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd"
+>
+    <name>AuraQ Tree View</name>
+    <description>My widget description</description>
+    <icon />
+    <properties>
+        <propertyGroup caption="Data">
+            <property key="treeData" type="datasource" isList="true" required="true">
+                <caption>Tree Entity</caption>
+                <description>Items that will appear in the tree</description>
+            </property>
+            <property key="rootAssociation" type="association" selectableObjects="treeData" required="true">
+                <caption>Root association</caption>
+                <description>Association from the context to the first level of items (can be one or many)</description>
+                <associationTypes>
+                    <associationType name="Reference" />
+                    <associationType name="ReferenceSet" />
+                </associationTypes>
+            </property>
+            <property
+                key="childAssociation"
+                type="association"
+                selectableObjects="treeData"
+                dataSource="treeData"
+                required="true"
+            >
+                <caption>Child association</caption>
+                <description>Association to child objects</description>
+                <associationTypes>
+                    <associationType name="ReferenceSet" />
+                </associationTypes>
+            </property>
+            <property key="itemId" type="attribute" dataSource="treeData" required="true">
+                <caption>Item ID</caption>
+                <description />
+                <attributeTypes>
+                    <attributeType name="Long" />
+                </attributeTypes>
+            </property>
+            <property key="itemIsDisabled" type="attribute" dataSource="treeData" required="false">
+                <caption>Item is disabled</caption>
+                <description />
+                <attributeTypes>
+                    <attributeType name="Boolean" />
+                </attributeTypes>
+            </property>
+            <property key="expansionTrigger" type="enumeration" defaultValue="content">
+                <caption>Expansion Trigger</caption>
+                <description />
+                <enumerationValues>
+                    <enumerationValue key="content">Content</enumerationValue>
+                    <enumerationValue key="iconContainer">Icon Container</enumerationValue>
+                </enumerationValues>
+            </property>            
+            <property key="itemClasses" type="expression" dataSource="treeData" required="false">
+                <caption>Item Classes</caption>
+                <description />
+                <returnType type="String" />
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Icon">
+            <property key="collapseIconType" type="expression" dataSource="treeData" required="false">
+                <caption>Icon Type (Expanded)</caption>
+                <description>Icon to show if item has children and is expanded. If no value is defined the widget default will be used</description>
+                <returnType type="String" />
+            </property>
+            <property key="expandIconType" type="expression" dataSource="treeData" required="false">
+                <caption>Icon Type (Collapsed)</caption>
+                <description>Icon to show if item has children and is collapsed. If no value is defined the widget default will be used</description>
+                <returnType type="String" />
+            </property>
+            <property key="endIconType" type="expression" dataSource="treeData" required="false">
+                <caption>Icon Type (End)</caption>
+                <description>Icon to show if item has no children. If no value is defined the widget default will be used</description>
+                <returnType type="String" />
+            </property>
+            <property key="icons" type="object" isList="true" required="true">
+                <caption>Icons</caption>
+                <description />
+                <properties>
+                    <propertyGroup caption="General">
+                        <property key="iconType" type="string" required="true">
+                            <caption>Icon Type</caption>
+                            <description />
+                        </property>
+                        <property key="icon" type="icon" required="true">
+                            <caption>Icon</caption>
+                            <description />
+                        </property>
+                    </propertyGroup>
+                </properties>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Label">
+            <property key="labelShowAs" type="enumeration" defaultValue="attribute">
+                <caption>Show Label Content As</caption>
+                <description />
+                <enumerationValues>
+                    <enumerationValue key="attribute">Attribute</enumerationValue>
+                    <enumerationValue key="dynamicText">Dynamic text</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="labelAttribute" type="attribute" dataSource="treeData" required="false">
+                <caption>Label Attribute</caption>
+                <description />
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
+            </property>
+            <property key="labelDynamic" type="textTemplate" dataSource="treeData" required="false">
+                <caption>Label Dynamic Text</caption>
+                <description />
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Events">
+            <property key="onItemClick" dataSource="treeData" type="action">
+                <caption>On item select</caption>
+                <description>Action to be performed when an item is selected</description>
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>
