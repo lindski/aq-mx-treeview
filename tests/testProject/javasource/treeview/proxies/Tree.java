@@ -21,8 +21,6 @@ public class Tree implements com.mendix.systemwideinterfaces.core.IEntityProxy
 	public enum MemberNames
 	{
 		Description("Description"),
-		HasSingleRootItem("HasSingleRootItem"),
-		Tree_TreeItem_SingleRoot("TreeView.Tree_TreeItem_SingleRoot"),
 		Tree_TreeItem_MultiRoot("TreeView.Tree_TreeItem_MultiRoot");
 
 		private final java.lang.String metaName;
@@ -118,89 +116,6 @@ public class Tree implements com.mendix.systemwideinterfaces.core.IEntityProxy
 	public final void setDescription(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String description)
 	{
 		getMendixObject().setValue(context, MemberNames.Description.toString(), description);
-	}
-
-	/**
-	 * @return value of HasSingleRootItem
-	 */
-	public final java.lang.Boolean getHasSingleRootItem()
-	{
-		return getHasSingleRootItem(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of HasSingleRootItem
-	 */
-	public final java.lang.Boolean getHasSingleRootItem(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.HasSingleRootItem.toString());
-	}
-
-	/**
-	 * Set value of HasSingleRootItem
-	 * @param hassinglerootitem
-	 */
-	public final void setHasSingleRootItem(java.lang.Boolean hassinglerootitem)
-	{
-		setHasSingleRootItem(getContext(), hassinglerootitem);
-	}
-
-	/**
-	 * Set value of HasSingleRootItem
-	 * @param context
-	 * @param hassinglerootitem
-	 */
-	public final void setHasSingleRootItem(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean hassinglerootitem)
-	{
-		getMendixObject().setValue(context, MemberNames.HasSingleRootItem.toString(), hassinglerootitem);
-	}
-
-	/**
-	 * @throws com.mendix.core.CoreException
-	 * @return value of Tree_TreeItem_SingleRoot
-	 */
-	public final treeview.proxies.TreeItem getTree_TreeItem_SingleRoot() throws com.mendix.core.CoreException
-	{
-		return getTree_TreeItem_SingleRoot(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of Tree_TreeItem_SingleRoot
-	 * @throws com.mendix.core.CoreException
-	 */
-	public final treeview.proxies.TreeItem getTree_TreeItem_SingleRoot(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
-	{
-		treeview.proxies.TreeItem result = null;
-		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.Tree_TreeItem_SingleRoot.toString());
-		if (identifier != null) {
-			result = treeview.proxies.TreeItem.load(context, identifier);
-		}
-		return result;
-	}
-
-	/**
-	 * Set value of Tree_TreeItem_SingleRoot
-	 * @param tree_treeitem_singleroot
-	 */
-	public final void setTree_TreeItem_SingleRoot(treeview.proxies.TreeItem tree_treeitem_singleroot)
-	{
-		setTree_TreeItem_SingleRoot(getContext(), tree_treeitem_singleroot);
-	}
-
-	/**
-	 * Set value of Tree_TreeItem_SingleRoot
-	 * @param context
-	 * @param tree_treeitem_singleroot
-	 */
-	public final void setTree_TreeItem_SingleRoot(com.mendix.systemwideinterfaces.core.IContext context, treeview.proxies.TreeItem tree_treeitem_singleroot)
-	{
-		if (tree_treeitem_singleroot == null) {
-			getMendixObject().setValue(context, MemberNames.Tree_TreeItem_SingleRoot.toString(), null);
-		} else {
-			getMendixObject().setValue(context, MemberNames.Tree_TreeItem_SingleRoot.toString(), tree_treeitem_singleroot.getMendixObject().getId());
-		}
 	}
 
 	/**

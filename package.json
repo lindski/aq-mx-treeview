@@ -1,7 +1,7 @@
 {
   "name": "aqtreeview",
   "widgetName": "AqTreeView",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Treeview widget based on https://mui.com/x/react-tree-view/",
   "copyright": "© AuraQ Limited 2024. All rights reserved.",
   "author": "Iain L",

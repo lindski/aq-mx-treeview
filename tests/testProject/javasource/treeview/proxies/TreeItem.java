@@ -24,7 +24,6 @@ public class TreeItem implements com.mendix.systemwideinterfaces.core.IEntityPro
 		ObjectId("ObjectId"),
 		IsDisabled("IsDisabled"),
 		ItemType("ItemType"),
-		Tree_TreeItem_SingleRoot("TreeView.Tree_TreeItem_SingleRoot"),
 		TreeItem_ChildTreeItem("TreeView.TreeItem_ChildTreeItem"),
 		TreeItem_Tree("TreeView.TreeItem_Tree"),
 		ChildTreeItem_TreeItem("TreeView.ChildTreeItem_TreeItem");
@@ -127,7 +126,7 @@ public class TreeItem implements com.mendix.systemwideinterfaces.core.IEntityPro
 	/**
 	 * @return value of ObjectId
 	 */
-	public final java.lang.Long getObjectId()
+	public final java.lang.String getObjectId()
 	{
 		return getObjectId(getContext());
 	}
@@ -136,16 +135,16 @@ public class TreeItem implements com.mendix.systemwideinterfaces.core.IEntityPro
 	 * @param context
 	 * @return value of ObjectId
 	 */
-	public final java.lang.Long getObjectId(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getObjectId(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.Long) getMendixObject().getValue(context, MemberNames.ObjectId.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.ObjectId.toString());
 	}
 
 	/**
 	 * Set value of ObjectId
 	 * @param objectid
 	 */
-	public final void setObjectId(java.lang.Long objectid)
+	public final void setObjectId(java.lang.String objectid)
 	{
 		setObjectId(getContext(), objectid);
 	}
@@ -155,7 +154,7 @@ public class TreeItem implements com.mendix.systemwideinterfaces.core.IEntityPro
 	 * @param context
 	 * @param objectid
 	 */
-	public final void setObjectId(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Long objectid)
+	public final void setObjectId(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String objectid)
 	{
 		getMendixObject().setValue(context, MemberNames.ObjectId.toString(), objectid);
 	}
@@ -238,53 +237,6 @@ public class TreeItem implements com.mendix.systemwideinterfaces.core.IEntityPro
 			getMendixObject().setValue(context, MemberNames.ItemType.toString(), itemtype.toString());
 		} else {
 			getMendixObject().setValue(context, MemberNames.ItemType.toString(), null);
-		}
-	}
-
-	/**
-	 * @throws com.mendix.core.CoreException
-	 * @return value of Tree_TreeItem_SingleRoot
-	 */
-	public final treeview.proxies.Tree getTree_TreeItem_SingleRoot() throws com.mendix.core.CoreException
-	{
-		return getTree_TreeItem_SingleRoot(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of Tree_TreeItem_SingleRoot
-	 * @throws com.mendix.core.CoreException
-	 */
-	public final treeview.proxies.Tree getTree_TreeItem_SingleRoot(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
-	{
-		treeview.proxies.Tree result = null;
-		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.Tree_TreeItem_SingleRoot.toString());
-		if (identifier != null) {
-			result = treeview.proxies.Tree.load(context, identifier);
-		}
-		return result;
-	}
-
-	/**
-	 * Set value of Tree_TreeItem_SingleRoot
-	 * @param tree_treeitem_singleroot
-	 */
-	public final void setTree_TreeItem_SingleRoot(treeview.proxies.Tree tree_treeitem_singleroot)
-	{
-		setTree_TreeItem_SingleRoot(getContext(), tree_treeitem_singleroot);
-	}
-
-	/**
-	 * Set value of Tree_TreeItem_SingleRoot
-	 * @param context
-	 * @param tree_treeitem_singleroot
-	 */
-	public final void setTree_TreeItem_SingleRoot(com.mendix.systemwideinterfaces.core.IContext context, treeview.proxies.Tree tree_treeitem_singleroot)
-	{
-		if (tree_treeitem_singleroot == null) {
-			getMendixObject().setValue(context, MemberNames.Tree_TreeItem_SingleRoot.toString(), null);
-		} else {
-			getMendixObject().setValue(context, MemberNames.Tree_TreeItem_SingleRoot.toString(), tree_treeitem_singleroot.getMendixObject().getId());
 		}
 	}
 

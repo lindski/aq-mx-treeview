@@ -17,12 +17,13 @@ export function AqTreeView(props) {
     const apiRef = useTreeViewApiRef();
 
     const {
+        selectedItem,
         rootAssociation,
         childAssociation,
         itemId,
         itemIsDisabled,
         expansionTrigger,
-        onItemClick,
+        onItemSelectionChanged,
         labelShowAs,
         labelAttribute,
         labelDynamic,
@@ -50,10 +51,6 @@ export function AqTreeView(props) {
             icons.reduce((result, icon) => ((result[icon.iconType] = icon.icon), result), {})
         )
     }, [icons]);
-
-    const getId = value => {
-        return `id-${value}`;
-    };
 
     const getLabelContent = item => {
         switch (labelShowAs) {
@@ -89,7 +86,7 @@ export function AqTreeView(props) {
 
     const getTreeItemForMxObject = mx => {
         return {
-            id: getId(itemId.get(mx).value),
+            id: itemId.get(mx).value,
             label: getLabelContent(mx),
             disabled: itemIsDisabled ? itemIsDisabled.get(mx).value : false,
             children: getChildTreeNodes(mx),
@@ -123,9 +120,13 @@ export function AqTreeView(props) {
     const handleSelectedItemsChange = (event, itemId) => {
         if (itemId != null && apiRef.current) {
             const item = apiRef.current.getItem(itemId);
-            const onItemClickAction = onItemClick ? onItemClick.get(item.mx) : null;
-            if (onItemClickAction && onItemClickAction.canExecute && !onItemClickAction.isExecuting) {
-                onItemClickAction.execute();
+            //set the selected item association
+            if(selectedItem){
+                selectedItem.setValue(item.mx);
+            }
+            const onItemSelectionChangedAction = onItemSelectionChanged ? onItemSelectionChanged.get(item.mx) : null;
+            if (onItemSelectionChangedAction && onItemSelectionChangedAction.canExecute && !onItemSelectionChangedAction.isExecuting) {
+                onItemSelectionChangedAction.execute();
             }
         }
     };

@@ -54,25 +54,58 @@ public final class Microflows
 			)
 			.execute(context);
 	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_CreateTreeBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TreeView.ACT_CreateTree");
+		return builder;
+	}
+
+	public static void aCT_CreateTree(IContext context)
+	{
+		aCT_CreateTreeBuilder().execute(context);
+	}
 	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_NewTreeItem_ChildBuilder(
 		treeview.proxies.TreeItem _treeItem,
-		treeview.proxies.Tree _tree
+		treeview.proxies.Tree _tree,
+		treeview.proxies.TreeDisplayContext _treeDisplayContext
 	)
 	{
 		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TreeView.ACT_NewTreeItem_Child");
 		builder = builder.withParam("TreeItem", _treeItem);
 		builder = builder.withParam("Tree", _tree);
+		builder = builder.withParam("TreeDisplayContext", _treeDisplayContext);
 		return builder;
 	}
 
 	public static void aCT_NewTreeItem_Child(
 		IContext context,
 		treeview.proxies.TreeItem _treeItem,
-		treeview.proxies.Tree _tree
+		treeview.proxies.Tree _tree,
+		treeview.proxies.TreeDisplayContext _treeDisplayContext
 	)
 	{
 		aCT_NewTreeItem_ChildBuilder(
 				_treeItem,
+				_tree,
+				_treeDisplayContext
+			)
+			.execute(context);
+	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_OpenTreeViewEditBuilder(
+		treeview.proxies.Tree _tree
+	)
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TreeView.ACT_OpenTreeViewEdit");
+		builder = builder.withParam("Tree", _tree);
+		return builder;
+	}
+
+	public static void aCT_OpenTreeViewEdit(
+		IContext context,
+		treeview.proxies.Tree _tree
+	)
+	{
+		aCT_OpenTreeViewEditBuilder(
 				_tree
 			)
 			.execute(context);
@@ -135,25 +168,24 @@ public final class Microflows
 			.execute(context);
 		return result == null ? null : com.mendix.utils.ListUtils.map((java.util.List<IMendixObject>) result, obj -> treeview.proxies.TreeItem.initialize(context, obj));
 	}
-	public static com.mendix.core.actionmanagement.MicroflowCallBuilder dS_TreeDisplayContextBuilder(
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder sUB_OpenTreeViewEditBuilder(
 		treeview.proxies.Tree _tree
 	)
 	{
-		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TreeView.DS_TreeDisplayContext");
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TreeView.SUB_OpenTreeViewEdit");
 		builder = builder.withParam("Tree", _tree);
 		return builder;
 	}
 
-	public static treeview.proxies.TreeDisplayContext dS_TreeDisplayContext(
+	public static void sUB_OpenTreeViewEdit(
 		IContext context,
 		treeview.proxies.Tree _tree
 	)
 	{
-		Object result = dS_TreeDisplayContextBuilder(
+		sUB_OpenTreeViewEditBuilder(
 				_tree
 			)
 			.execute(context);
-		return result == null ? null : treeview.proxies.TreeDisplayContext.initialize(context, (IMendixObject) result);
 	}
 	public static com.mendix.core.actionmanagement.MicroflowCallBuilder wDG_TreeItem_SelectedBuilder(
 		treeview.proxies.TreeItem _treeItem,

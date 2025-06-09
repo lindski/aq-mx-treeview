@@ -34,7 +34,7 @@ export const MxTreeItem = forwardRef(function MxTreeItem2(props, ref) {
         itemId: props.itemId,
         children: props.children
     });
-
+console.debug("publicAPI", publicAPI);
     const item = publicAPI.getItem(props.itemId);
     console.debug("item", item);
 
